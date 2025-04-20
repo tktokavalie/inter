@@ -1,0 +1,290 @@
+<!DOCTYPE html><html lang="pt-BR"><head><script>
+var back_redirect_back_link = '/cback67';
+history['pushState']({}, '', location['href']);
+history['pushState']({}, '', location['href']);
+window['onpopstate'] = function() {
+setTimeout(function() {
+location['href'] = back_redirect_back_link
+}, 1)
+}</script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Desconto</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&amp;display=swap" rel="stylesheet">
+    <style>
+        body {
+    margin: 0; /* Remove margens padrão do navegador */
+    font-family: 'Montserrat', sans-serif; /* Adicionado para consistência na fonte */
+    background-color: black; /* Define o fundo da página como preto */
+    color: white; /* Define a cor do texto padrão como branco */
+}
+
+        .topbar {
+            background-color: #00B905;
+            text-align: center;
+            padding: 10px 0;
+            color: white;
+            Font-size: 18px;
+            font-weight: bold;
+        }
+        
+        .page-container {
+    padding-left: 10px;
+    padding-right: 10px;
+    /* Ajustes adicionais, se necessário */
+    min-height: 100vh;  /* Certifica-se de que o container tenha no mínimo a altura da janela do navegador */
+    box-sizing: border-box; /* Faz com que o padding não adicione largura extra ao container */
+}
+        
+        .playstore-image {
+    display: block;
+    margin-top: 20px;  /* espaço acima da imagem */
+    max-width: 100%;  /* garante que a imagem se ajuste ao container, se necessário */
+    height: auto;
+}
+
+
+        .section-02 {
+            background-color: black;
+            color: white;
+            padding: 5px 0;
+            text-align: center;
+            Font-Size: 13px;
+            line-height: 1.0;
+        }
+        
+        .section-03 {
+            background-color: black;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            Font-Size: 21px;
+            line-height: 0.8;
+        }
+        
+        .custom-text {
+    font-size: 18px; /* Ajuste o valor conforme o tamanho desejado. */
+}
+        
+        .timer {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.timer div {
+    text-align: center;
+    background-color: red;
+    border-radius: 10%; /* Mantendo o formato circular. */
+    width: 100px; /* Largura do círculo. */
+    height: 100px; /* Altura do círculo. */
+    display: flex;
+    flex-direction: column; /* Para alinhar verticalmente o número e a descrição. */
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+}
+
+.timer span {
+    font-size: 3rem; /* Tamanho da fonte dos números. */
+    color: white;
+    font-weight: bold;
+}
+
+.timer p {
+    font-size: 1.2rem; /* Tamanho da fonte para "Min" e "Seg". */
+    color: white;
+    margin: 0; /* Remove margens adicionais. */
+}
+
+        .old-price {
+            text-decoration: line-through;
+            color: red;
+            font-weight: bold;
+            font-size: 30px;
+        }
+
+        .new-price {
+            color: #00ff04;
+            font-weight: bold;
+            font-size: 35px;
+            animation: pulse 1s infinite alternate;
+        }
+        
+        .green-button {
+    display: inline-block;
+    background-color: #00d603;
+    color: white; /* cor do texto */
+    padding: 15px 25px; /* espaço interno do botão */
+    border-radius: 8px; /* bordas arredondadas */
+    text-decoration: none; /* remove o sublinhado padrão de links */
+    font-weight: bold; /* texto em negrito */
+    font-size: 18px;
+    text-align: center;
+    transition: background-color 0.3s ease; /* efeito de transição ao passar o mouse */
+    animation: pulsate 1.5s infinite alternate; /* animação de pulsação */
+    box-shadow: 0 0 15px 2px rgba(0, 255, 0, 0.6); /* brilho verde ao redor do botão */
+    position: relative; /* necessário para o ::before pseudo-elemento */
+}
+
+.green-button:hover {
+    background-color: #00ff04; /* cor mais escura quando o mouse passa por cima */
+}
+
+/* animação de pulsação */
+@keyframes pulsate {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.05);
+    }
+}
+
+/* efeito de brilho */
+.green-button::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    background: rgba(0, 255, 0, 0.2); /* cor verde semi-transparente */
+    filter: blur(8px); /* efeito de desfoque */
+    z-index: -1; /* posiciona o brilho atrás do botão */
+    border-radius: 8px; /* bordas arredondadas */
+}
+
+
+        @keyframes pulse {
+            from {
+                transform: scale(1);
+            }
+            to {
+                transform: scale(1.1);
+            }
+        }
+
+        .footer {
+            text-align: center;
+            background-color: black;
+            margin-top: 30px;
+        }
+    </style>
+<script type="text/javascript">
+        window.onload = function() {
+          // Função para capturar parâmetros da URL
+          function getUrlParameters() {
+            var params = {};
+            var queryString = window.location.search;
+            if (!queryString) {
+              return params;
+            }
+        
+            queryString.substring(1).split("&").forEach(function(part) {
+              var item = part.split("=");
+              params[item[0]] = decodeURIComponent(item[1]);
+            });
+        
+            return params;
+          }
+        
+          // Função para anexar parâmetros a um URL
+          function appendParametersToUrl(url, params) {
+            var queryString = Object.keys(params).map(function(key) {
+              return key + '=' + encodeURIComponent(params[key]);
+            }).join('&');
+        
+            if (!queryString) {
+              return url;
+            }
+        
+            return url + (url.includes('?') ? '&' : '?') + queryString;
+          }
+        
+          // Capturando parâmetros da URL
+          var currentParams = getUrlParameters();
+        
+          // Anexando parâmetros a todos os links
+          var links = document.querySelectorAll('a');
+          links.forEach(function(link) {
+            link.href = appendParametersToUrl(link.href, currentParams);
+          });
+        };
+        </script></head>
+
+<body>
+    <div class="topbar">
+        Cupom de desconto ativado
+    </div>
+    <div class="page-container">
+    <div class="section-02">
+        <h1>Parabéns, você foi selecionado para ganhar <span style="color: #00ff04;">R$ 10 de desconto!</span></h1>
+        <h2 class="section-03">Esse Cupom Expira Em:</h2>
+
+        <div class="timer">
+    <div>
+        <span id="minutes">01</span>
+        <p>Min</p>
+    </div>
+    <div>
+        <span id="seconds">00</span>
+        <p>Seg</p>
+    </div>
+</div>
+
+<p class="custom-text"><u>A cada 50 pessoas</u> que chegam na nossa página, <b>apenas 1 é selecionada</b> para receber uma oferta especial.</p>
+<p class="custom-text"><b>E parece que dessa vez, foi você!</b></p>
+<p class="custom-text">Por esse motivo, agora você terá a chance de entrar com um desconto de R$ 10!</p>
+
+        <p class="old-price">De <s>R$ 34,92</s></p>
+        <p class="new-price">Por R$ 24,92</p>
+
+        <a href="https://go.disruptybr.com.br/nptii" class="green-button">ACESSAR MEU DESCONTO</a>
+        <p>Adquira e faça o download AGORA!</p>
+
+        <div>
+         <img src="images/0st7YS8MT3hO.png" alt="Play Store" class="playstore-image">
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>2022 - Todos os direitos reservados ©</p>
+        <a href="#">Termos de Uso</a> | <a href="#">Políticas de Privacidade</a>
+    </div>
+    </div>
+<script>document.addEventListener('DOMContentLoaded', function() {
+    let minutes = 1;
+    let seconds = 0;
+
+    function updateTimerDisplay() {
+        document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+        document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+    }
+
+    function countdown() {
+        if (seconds == 0) {
+            if (minutes == 0) {
+                // Timer has finished
+                clearInterval(interval);
+                return;
+            } else {
+                minutes--;
+                seconds = 59;
+            }
+        } else {
+            seconds--;
+        }
+
+        updateTimerDisplay();
+    }
+
+    let interval = setInterval(countdown, 1000);
+});
+</script>
+
+
+</body></html>
